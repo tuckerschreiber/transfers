@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import TransferTable from "@/components/pharmacy/TransferTable";
 import PrescriptionDetail from "@/components/pharmacy/PrescriptionDetail";
+import Toast from "@/components/Toast";
 import { Transfer, Prescription, Pharmacy, TransferStatus } from "@/lib/types";
 
 interface TransferRow {
@@ -15,6 +16,8 @@ interface TransferRow {
 export default function PharmacyDashboard() {
   const [rows, setRows] = useState<TransferRow[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [toastMessage, setToastMessage] = useState("");
+  const [showToast, setShowToast] = useState(false);
 
   const fetchData = useCallback(async () => {
     const [transfers, pharmacies] = await Promise.all([
@@ -34,7 +37,12 @@ export default function PharmacyDashboard() {
     setRows(enriched);
   }, []);
 
-  useEffect(() => { fetchData(); }, [fetchData]);
+  // Poll every 3 seconds to pick up changes from patient demo sidebar
+  useEffect(() => {
+    fetchData();
+    const interval = setInterval(fetchData, 3000);
+    return () => clearInterval(interval);
+  }, [fetchData]);
 
   const handleAdvanceStatus = async (transferId: string, newStatus: TransferStatus) => {
     await fetch(`/api/transfers/${transferId}`, {
@@ -43,6 +51,12 @@ export default function PharmacyDashboard() {
       body: JSON.stringify({ status: newStatus }),
     });
     fetchData();
+
+    // Show toast notification
+    const statusLabel = newStatus.charAt(0).toUpperCase() + newStatus.slice(1);
+    setToastMessage(`Status updated to ${statusLabel}`);
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2000);
   };
 
   const selectedRow = rows.find((r) => r.transfer.id === selectedId);
@@ -75,6 +89,8 @@ export default function PharmacyDashboard() {
           </div>
         )}
       </div>
+
+      <Toast message={toastMessage} isVisible={showToast} />
     </div>
   );
 }

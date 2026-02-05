@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import IPhoneFrame from "@/components/IPhoneFrame";
 import DemoSidebar from "@/components/DemoSidebar";
 import HomeScreen from "@/components/patient/HomeScreen";
@@ -14,6 +15,20 @@ export default function Home() {
   const [currentView, setCurrentView] = useState<DemoView>("home");
   const [trackerState, setTrackerState] = useState<TransferStatus>("submitted");
 
+  // Sync sidebar tracker state with API so pharmacy dashboard reflects changes
+  useEffect(() => {
+    if (currentView === "tracker") {
+      fetch("/api/transfers/tx-1", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: trackerState }),
+      });
+    }
+  }, [trackerState, currentView]);
+
+  // Determine the view key for crossfade (home and transfer-modal share the same base screen)
+  const viewKey = currentView === "transfer-modal" ? "home" : currentView;
+
   return (
     <div className="flex h-screen bg-gray-50">
       <DemoSidebar
@@ -24,12 +39,23 @@ export default function Home() {
       />
       <div className="flex-1 flex items-center justify-center">
         <IPhoneFrame>
-          {(currentView === "home" || currentView === "transfer-modal") && (
-            <HomeScreen onTransferPress={() => setCurrentView("transfer-modal")} />
-          )}
-          {currentView === "tracker" && (
-            <TrackerHomeScreen status={trackerState} />
-          )}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={viewKey}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="h-full"
+            >
+              {(currentView === "home" || currentView === "transfer-modal") && (
+                <HomeScreen onTransferPress={() => setCurrentView("transfer-modal")} />
+              )}
+              {currentView === "tracker" && (
+                <TrackerHomeScreen status={trackerState} />
+              )}
+            </motion.div>
+          </AnimatePresence>
           <TransferModal
             isOpen={currentView === "transfer-modal"}
             onClose={() => setCurrentView("home")}
