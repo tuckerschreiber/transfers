@@ -4,6 +4,7 @@ import { useState } from "react";
 import IPhoneFrame from "@/components/IPhoneFrame";
 import DemoSidebar from "@/components/DemoSidebar";
 import HomeScreen from "@/components/patient/HomeScreen";
+import TrackerHomeScreen from "@/components/patient/TrackerHomeScreen";
 import TransferModal from "@/components/patient/TransferModal";
 import { TransferStatus } from "@/lib/types";
 
@@ -27,9 +28,7 @@ export default function Home() {
             <HomeScreen onTransferPress={() => setCurrentView("transfer-modal")} />
           )}
           {currentView === "tracker" && (
-            <div className="p-4 pt-2 text-gray-900">
-              <p className="text-sm text-gray-400">Tracker view (coming in Task 7)</p>
-            </div>
+            <TrackerHomeScreen status={trackerState} />
           )}
           <TransferModal
             isOpen={currentView === "transfer-modal"}
