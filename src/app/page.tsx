@@ -3,6 +3,7 @@
 import { useState } from "react";
 import IPhoneFrame from "@/components/IPhoneFrame";
 import DemoSidebar from "@/components/DemoSidebar";
+import HomeScreen from "@/components/patient/HomeScreen";
 import { TransferStatus } from "@/lib/types";
 
 type DemoView = "home" | "transfer-modal" | "tracker";
@@ -21,11 +22,14 @@ export default function Home() {
       />
       <div className="flex-1 flex items-center justify-center">
         <IPhoneFrame>
-          <div className="p-4 pt-2 text-gray-900">
-            <p className="text-sm text-gray-400">
-              Current: {currentView} / {trackerState}
-            </p>
-          </div>
+          {(currentView === "home" || currentView === "transfer-modal") && (
+            <HomeScreen onTransferPress={() => setCurrentView("transfer-modal")} />
+          )}
+          {currentView === "tracker" && (
+            <div className="p-4 pt-2 text-gray-900">
+              <p className="text-sm text-gray-400">Tracker view (coming in Task 7)</p>
+            </div>
+          )}
         </IPhoneFrame>
       </div>
     </div>
