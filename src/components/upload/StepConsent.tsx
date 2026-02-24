@@ -40,8 +40,8 @@ function Checkbox({
           height: 20,
           minWidth: 20,
           borderRadius: 4,
-          border: checked ? "none" : "0.5px solid var(--felix-border)",
-          backgroundColor: checked ? "var(--felix-primary)" : "white",
+          border: checked ? "none" : "0.5px solid var(--tp-border)",
+          backgroundColor: checked ? "var(--tp-primary)" : "white",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -54,7 +54,7 @@ function Checkbox({
       <span
         style={{
           fontSize: 16,
-          color: "var(--felix-text-primary)",
+          color: "var(--tp-text-primary)",
           lineHeight: 1.5,
         }}
       >
@@ -76,7 +76,7 @@ export default function StepConsent({
         style={{
           fontSize: 28,
           fontWeight: 700,
-          color: "var(--felix-text-primary)",
+          color: "var(--tp-text-primary)",
           marginBottom: 8,
         }}
       >
@@ -85,7 +85,7 @@ export default function StepConsent({
       <p
         style={{
           fontSize: 16,
-          color: "var(--felix-text-secondary)",
+          color: "var(--tp-text-secondary)",
           marginBottom: 32,
           lineHeight: 1.5,
         }}

@@ -55,32 +55,32 @@ const valueProps = [
 
 export default function TransferInPage() {
   return (
-    <div className="felix-page min-h-screen flex flex-col">
+    <div className="tp-page min-h-screen flex flex-col">
       {/* Top nav */}
       <nav
         className="bg-white border-b"
-        style={{ borderColor: "var(--felix-border)", borderWidth: "0.5px" }}
+        style={{ borderColor: "var(--tp-border)", borderWidth: "0.5px" }}
       >
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link
             href="/transfer-in"
             className="text-[20px] font-bold"
-            style={{ color: "var(--felix-primary)" }}
+            style={{ color: "var(--tp-primary)" }}
           >
-            felix
+            Tucker&apos;s
           </Link>
           <div className="flex items-center gap-6">
             <Link
               href="/upload"
               className="text-[14px] transition-colors hover:underline"
-              style={{ color: "var(--felix-text-secondary)" }}
+              style={{ color: "var(--tp-text-secondary)" }}
             >
               Upload Rx
             </Link>
             <Link
               href="/pharmacy"
               className="text-[14px] transition-colors hover:underline"
-              style={{ color: "var(--felix-text-secondary)" }}
+              style={{ color: "var(--tp-text-secondary)" }}
             >
               Pharmacy Dashboard
             </Link>
@@ -93,13 +93,13 @@ export default function TransferInPage() {
         <div className="max-w-3xl mx-auto text-center">
           <h1
             className="text-[44px] leading-[1.15] font-bold tracking-tight"
-            style={{ color: "var(--felix-text-primary)" }}
+            style={{ color: "var(--tp-text-primary)" }}
           >
-            Get your prescriptions filled by Felix
+            Get your prescriptions filled by Tucker&apos;s Pharmacy
           </h1>
           <p
             className="mt-5 text-[18px] leading-relaxed max-w-2xl mx-auto"
-            style={{ color: "var(--felix-text-secondary)" }}
+            style={{ color: "var(--tp-text-secondary)" }}
           >
             Already have a prescription from your doctor? Upload it and we&apos;ll
             deliver your medication to your door &mdash; no assessment needed.
@@ -117,7 +117,7 @@ export default function TransferInPage() {
         <div className="max-w-4xl mx-auto">
           <h2
             className="text-[32px] font-bold text-center mb-14"
-            style={{ color: "var(--felix-text-primary)" }}
+            style={{ color: "var(--tp-text-primary)" }}
           >
             How it works
           </h2>
@@ -126,12 +126,12 @@ export default function TransferInPage() {
               <div
                 key={step.number}
                 className="bg-white rounded-[16px] p-8 text-center"
-                style={{ border: "1px solid var(--felix-border)" }}
+                style={{ border: "1px solid var(--tp-border)" }}
               >
                 <div
                   className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-5"
                   style={{
-                    backgroundColor: "var(--felix-primary)",
+                    backgroundColor: "var(--tp-primary)",
                     color: "white",
                   }}
                 >
@@ -139,19 +139,19 @@ export default function TransferInPage() {
                 </div>
                 <div
                   className="text-[13px] font-semibold uppercase tracking-wider mb-2"
-                  style={{ color: "var(--felix-primary)" }}
+                  style={{ color: "var(--tp-primary)" }}
                 >
                   Step {step.number}
                 </div>
                 <h3
                   className="text-[20px] font-bold mb-2"
-                  style={{ color: "var(--felix-text-primary)" }}
+                  style={{ color: "var(--tp-text-primary)" }}
                 >
                   {step.title}
                 </h3>
                 <p
                   className="text-[15px] leading-relaxed"
-                  style={{ color: "var(--felix-text-secondary)" }}
+                  style={{ color: "var(--tp-text-secondary)" }}
                 >
                   {step.description}
                 </p>
@@ -173,7 +173,7 @@ export default function TransferInPage() {
                 className="w-14 h-14 rounded-[14px] flex items-center justify-center shrink-0"
                 style={{
                   backgroundColor: "#FEF3E6",
-                  color: "var(--felix-primary)",
+                  color: "var(--tp-primary)",
                 }}
               >
                 <prop.Icon size={26} />
@@ -181,7 +181,7 @@ export default function TransferInPage() {
               <div>
                 <h3
                   className="text-[22px] font-bold mb-3"
-                  style={{ color: "var(--felix-text-primary)" }}
+                  style={{ color: "var(--tp-text-primary)" }}
                 >
                   {prop.heading}
                 </h3>
@@ -190,11 +190,11 @@ export default function TransferInPage() {
                     <li
                       key={j}
                       className="text-[16px] leading-relaxed flex items-start gap-2"
-                      style={{ color: "var(--felix-text-secondary)" }}
+                      style={{ color: "var(--tp-text-secondary)" }}
                     >
                       <span
                         className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"
-                        style={{ backgroundColor: "var(--felix-primary)" }}
+                        style={{ backgroundColor: "var(--tp-primary)" }}
                       />
                       {point}
                     </li>
@@ -214,20 +214,20 @@ export default function TransferInPage() {
         <div className="max-w-3xl mx-auto text-center">
           <h2
             className="text-[32px] font-bold mb-4"
-            style={{ color: "var(--felix-text-primary)" }}
+            style={{ color: "var(--tp-text-primary)" }}
           >
             Ready to get started?
           </h2>
           <p
             className="text-[18px] mb-8"
-            style={{ color: "var(--felix-text-secondary)" }}
+            style={{ color: "var(--tp-text-secondary)" }}
           >
             Upload your prescription and we&apos;ll take care of the rest.
           </p>
           <Link
             href="/upload"
             className="inline-block px-8 py-4 rounded-[12px] text-[16px] font-medium text-white transition-colors"
-            style={{ backgroundColor: "var(--felix-primary)" }}
+            style={{ backgroundColor: "var(--tp-primary)" }}
           >
             Upload your prescription
           </Link>
@@ -237,27 +237,27 @@ export default function TransferInPage() {
       {/* Footer */}
       <footer
         className="border-t py-8 px-6"
-        style={{ borderColor: "var(--felix-border)" }}
+        style={{ borderColor: "var(--tp-border)" }}
       >
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <span
             className="text-[14px]"
-            style={{ color: "var(--felix-text-tertiary)" }}
+            style={{ color: "var(--tp-text-tertiary)" }}
           >
-            Felix &mdash; Demo Prototype
+            Tucker&apos;s Pharmacy &mdash; Demo Prototype
           </span>
           <div className="flex items-center gap-6">
             <Link
               href="/"
               className="text-[14px] transition-colors hover:underline"
-              style={{ color: "var(--felix-text-tertiary)" }}
+              style={{ color: "var(--tp-text-tertiary)" }}
             >
               Patient Demo
             </Link>
             <Link
               href="/pharmacy"
               className="text-[14px] transition-colors hover:underline"
-              style={{ color: "var(--felix-text-tertiary)" }}
+              style={{ color: "var(--tp-text-tertiary)" }}
             >
               Pharmacy Dashboard
             </Link>

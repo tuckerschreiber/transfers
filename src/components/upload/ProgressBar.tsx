@@ -30,10 +30,10 @@ export default function ProgressBar({ currentStep }: ProgressBarProps) {
                 <div
                   className={`w-[10px] h-[10px] rounded-full flex items-center justify-center transition-colors duration-200 ${
                     isCompleted
-                      ? "bg-[var(--felix-primary)]"
+                      ? "bg-[var(--tp-primary)]"
                       : isCurrent
-                      ? "bg-[var(--felix-primary)]"
-                      : "border-[1.5px] border-[var(--felix-border)] bg-white"
+                      ? "bg-[var(--tp-primary)]"
+                      : "border-[1.5px] border-[var(--tp-border)] bg-white"
                   }`}
                 >
                   {isCompleted && (
@@ -43,8 +43,8 @@ export default function ProgressBar({ currentStep }: ProgressBarProps) {
                 <span
                   className={`text-[14px] mt-2 whitespace-nowrap transition-colors duration-200 ${
                     isCompleted || isCurrent
-                      ? "text-[var(--felix-text-primary)] font-medium"
-                      : "text-[var(--felix-text-tertiary)]"
+                      ? "text-[var(--tp-text-primary)] font-medium"
+                      : "text-[var(--tp-text-tertiary)]"
                   }`}
                 >
                   {label}
@@ -55,8 +55,8 @@ export default function ProgressBar({ currentStep }: ProgressBarProps) {
                 <div
                   className={`h-[2px] flex-1 mx-2 transition-colors duration-200 ${
                     i < currentStep
-                      ? "bg-[var(--felix-primary)]"
-                      : "bg-[var(--felix-border)]"
+                      ? "bg-[var(--tp-primary)]"
+                      : "bg-[var(--tp-border)]"
                   }`}
                 />
               )}

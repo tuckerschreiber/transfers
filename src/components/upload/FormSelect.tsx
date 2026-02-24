@@ -2,7 +2,7 @@
 
 import { useId } from "react";
 
-interface FelixSelectProps {
+interface FormSelectProps {
   label: string;
   value: string;
   onChange: (value: string) => void;
@@ -10,13 +10,13 @@ interface FelixSelectProps {
   required?: boolean;
 }
 
-export default function FelixSelect({
+export default function FormSelect({
   label,
   value,
   onChange,
   options,
   required = false,
-}: FelixSelectProps) {
+}: FormSelectProps) {
   const id = useId();
 
   return (
@@ -26,13 +26,13 @@ export default function FelixSelect({
         style={{
           display: "block",
           fontSize: 14,
-          color: "var(--felix-text-secondary)",
+          color: "var(--tp-text-secondary)",
           marginBottom: 8,
         }}
       >
         {label}
         {required && (
-          <span style={{ color: "var(--felix-primary)", marginLeft: 2 }}>*</span>
+          <span style={{ color: "var(--tp-primary)", marginLeft: 2 }}>*</span>
         )}
       </label>
       <select
@@ -43,23 +43,23 @@ export default function FelixSelect({
           width: "100%",
           fontSize: 16,
           padding: 12,
-          border: "0.5px solid var(--felix-border)",
+          border: "0.5px solid var(--tp-border)",
           borderRadius: 12,
           outline: "none",
-          color: value ? "var(--felix-text-primary)" : "var(--felix-text-tertiary)",
+          color: value ? "var(--tp-text-primary)" : "var(--tp-text-tertiary)",
           backgroundColor: "white",
           appearance: "none",
           boxSizing: "border-box",
           fontFamily: "inherit",
         }}
         onFocus={(e) => {
-          e.currentTarget.style.border = "0.125rem solid var(--felix-focus)";
+          e.currentTarget.style.border = "0.125rem solid var(--tp-focus)";
         }}
         onBlur={(e) => {
-          e.currentTarget.style.border = "0.5px solid var(--felix-border)";
+          e.currentTarget.style.border = "0.5px solid var(--tp-border)";
         }}
       >
-        <option value="" style={{ color: "var(--felix-text-tertiary)" }}>
+        <option value="" style={{ color: "var(--tp-text-tertiary)" }}>
           Select...
         </option>
         {options.map((opt) => (

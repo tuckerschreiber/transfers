@@ -25,7 +25,7 @@ export default function UploadDemoSidebar({
   return (
     <div
       className="w-[280px] h-screen flex flex-col p-6 shrink-0"
-      style={{ backgroundColor: "var(--felix-text-primary)" }}
+      style={{ backgroundColor: "var(--tp-text-primary)" }}
     >
       {/* Header */}
       <p className="text-[14px] uppercase tracking-wider text-white/50 mb-1">

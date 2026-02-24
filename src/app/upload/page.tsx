@@ -92,7 +92,7 @@ export default function UploadPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         patientName: "Demo User",
-        patientEmail: "demo@felixforyou.ca",
+        patientEmail: "demo@tuckerspharmacy.ca",
         imageUrl: "/sample-prescription.svg",
         medicationName: prescriptionDetails.medicationName,
         dose: prescriptionDetails.dose,
@@ -173,7 +173,7 @@ export default function UploadPage() {
         );
       default:
         return (
-          <div className="text-center" style={{ color: "var(--felix-text-tertiary)" }}>
+          <div className="text-center" style={{ color: "var(--tp-text-tertiary)" }}>
             Step {currentStep + 1} of 7
           </div>
         );
@@ -183,7 +183,7 @@ export default function UploadPage() {
   // Confirmation screen with demo sidebar — completely different layout
   if (currentStep === 6) {
     return (
-      <div className="felix-page flex h-screen">
+      <div className="tp-page flex h-screen">
         <UploadDemoSidebar
           uploadStatus={uploadStatus}
           onStatusChange={async (status) => {
@@ -228,17 +228,17 @@ export default function UploadPage() {
   };
 
   return (
-    <div className="felix-page min-h-screen flex flex-col">
+    <div className="tp-page min-h-screen flex flex-col">
       {/* Top nav */}
-      <nav className="bg-white border-b" style={{ borderColor: "var(--felix-border)", borderWidth: "0.5px" }}>
+      <nav className="bg-white border-b" style={{ borderColor: "var(--tp-border)", borderWidth: "0.5px" }}>
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/transfer-in" className="text-[20px] font-bold" style={{ color: "var(--felix-primary)" }}>
-            felix
+          <Link href="/transfer-in" className="text-[20px] font-bold" style={{ color: "var(--tp-primary)" }}>
+            Tucker&apos;s
           </Link>
           <Link
             href="/pharmacy"
             className="text-[14px] transition-colors hover:underline"
-            style={{ color: "var(--felix-text-secondary)" }}
+            style={{ color: "var(--tp-text-secondary)" }}
           >
             Pharmacy Dashboard
           </Link>
@@ -246,7 +246,7 @@ export default function UploadPage() {
       </nav>
 
       {/* Progress bar */}
-      <div className="bg-white border-b" style={{ borderColor: "var(--felix-border)", borderWidth: "0.5px" }}>
+      <div className="bg-white border-b" style={{ borderColor: "var(--tp-border)", borderWidth: "0.5px" }}>
         <ProgressBar currentStep={currentStep} />
       </div>
 
@@ -258,13 +258,13 @@ export default function UploadPage() {
       </div>
 
       {/* Bottom buttons */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t" style={{ borderColor: "var(--felix-border)", borderWidth: "0.5px" }}>
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t" style={{ borderColor: "var(--tp-border)", borderWidth: "0.5px" }}>
         <div className="max-w-[560px] mx-auto px-6 py-4 flex items-center justify-between">
           {currentStep > 0 ? (
             <button
               onClick={() => setCurrentStep((s) => s - 1)}
               className="text-[16px] transition-colors hover:underline"
-              style={{ color: "var(--felix-text-secondary)" }}
+              style={{ color: "var(--tp-text-secondary)" }}
             >
               Back
             </button>
@@ -277,15 +277,15 @@ export default function UploadPage() {
               disabled={!canContinue}
               className="px-6 py-3 rounded-[12px] text-[16px] font-medium text-white transition-colors"
               style={{
-                backgroundColor: "var(--felix-primary)",
+                backgroundColor: "var(--tp-primary)",
                 opacity: canContinue ? 1 : 0.5,
                 cursor: canContinue ? "pointer" : "not-allowed",
               }}
               onMouseEnter={(e) => {
-                if (canContinue) e.currentTarget.style.backgroundColor = "var(--felix-primary-hover)";
+                if (canContinue) e.currentTarget.style.backgroundColor = "var(--tp-primary-hover)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "var(--felix-primary)";
+                e.currentTarget.style.backgroundColor = "var(--tp-primary)";
               }}
             >
               {continueLabel}

@@ -1,7 +1,7 @@
 "use client";
 
-import FelixInput from "./FelixInput";
-import FelixSelect from "./FelixSelect";
+import FormInput from "./FormInput";
+import FormSelect from "./FormSelect";
 
 export interface InsuranceDetails {
   province: string;
@@ -39,7 +39,7 @@ export default function StepInsurance({ details, onChange }: StepInsuranceProps)
         style={{
           fontSize: 28,
           fontWeight: 700,
-          color: "var(--felix-text-primary)",
+          color: "var(--tp-text-primary)",
           marginBottom: 8,
         }}
       >
@@ -48,7 +48,7 @@ export default function StepInsurance({ details, onChange }: StepInsuranceProps)
       <p
         style={{
           fontSize: 16,
-          color: "var(--felix-text-secondary)",
+          color: "var(--tp-text-secondary)",
           marginBottom: 32,
           lineHeight: 1.5,
         }}
@@ -57,25 +57,25 @@ export default function StepInsurance({ details, onChange }: StepInsuranceProps)
         before we fill your prescription
       </p>
 
-      <FelixSelect
+      <FormSelect
         label="Province"
         value={details.province}
         onChange={(v) => update("province", v)}
         options={PROVINCES}
         required
       />
-      <FelixInput
+      <FormInput
         label="Insurance provider"
         value={details.insuranceProvider}
         onChange={(v) => update("insuranceProvider", v)}
       />
-      <FelixInput
+      <FormInput
         label="Policy / card number"
         value={details.insurancePolicyNumber}
         onChange={(v) => update("insurancePolicyNumber", v)}
         required
       />
-      <FelixInput
+      <FormInput
         label="Group number (optional)"
         value={details.insuranceGroupNumber}
         onChange={(v) => update("insuranceGroupNumber", v)}

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Prescription transfer demo prototype for Felix (digital pharmacy). An internal demo showing how patients transfer prescriptions from external pharmacies, with a "Domino's pizza tracker" style status view. Built to showcase rapid prototyping capability.
+Prescription transfer demo prototype for Tucker's Pharmacy. A demo showing how patients transfer prescriptions from external pharmacies, with a "Domino's pizza tracker" style status view. Built to showcase rapid prototyping capability.
 
 ## Tech Stack
 

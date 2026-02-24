@@ -25,13 +25,13 @@ export default function StepConfirmation() {
         className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
         style={{ backgroundColor: "rgba(222, 120, 31, 0.1)" }}
       >
-        <CheckCircle size={32} style={{ color: "var(--felix-primary)" }} />
+        <CheckCircle size={32} style={{ color: "var(--tp-primary)" }} />
       </div>
 
       {/* Heading */}
       <h1
         className="text-[24px] font-bold mb-3"
-        style={{ color: "var(--felix-text-primary)" }}
+        style={{ color: "var(--tp-text-primary)" }}
       >
         Prescription received. We&apos;ll review it and get back to you.
       </h1>
@@ -39,7 +39,7 @@ export default function StepConfirmation() {
       {/* Subtext */}
       <p
         className="text-[16px] mb-8"
-        style={{ color: "var(--felix-text-secondary)" }}
+        style={{ color: "var(--tp-text-secondary)" }}
       >
         Our pharmacy team is reviewing your prescription. You&apos;ll receive an
         update within 24 hours.
@@ -53,11 +53,11 @@ export default function StepConfirmation() {
               className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
               style={{ backgroundColor: "rgba(222, 120, 31, 0.1)" }}
             >
-              <Icon size={20} style={{ color: "var(--felix-primary)" }} />
+              <Icon size={20} style={{ color: "var(--tp-primary)" }} />
             </div>
             <span
               className="text-[14px]"
-              style={{ color: "var(--felix-text-primary)" }}
+              style={{ color: "var(--tp-text-primary)" }}
             >
               {text}
             </span>

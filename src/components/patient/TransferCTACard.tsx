@@ -8,7 +8,7 @@ export default function TransferCTACard({ onPress }: TransferCTACardProps) {
   return (
     <button onClick={onPress} className="bg-white rounded-2xl p-5 shadow-sm text-left w-[200px] shrink-0">
       <h3 className="font-semibold text-gray-900 text-[15px] leading-tight">
-        Transfer your prescriptions to Felix
+        Transfer your prescriptions to Tucker&apos;s Pharmacy
       </h3>
       <p className="text-xs text-gray-500 mt-1.5 leading-relaxed">
         Free delivery, auto refills &amp; renewals.

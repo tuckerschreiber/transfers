@@ -30,10 +30,10 @@ interface StepReviewProps {
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between py-1.5">
-      <span className="text-[14px]" style={{ color: "var(--felix-text-secondary)" }}>
+      <span className="text-[14px]" style={{ color: "var(--tp-text-secondary)" }}>
         {label}
       </span>
-      <span className="text-[14px] font-medium" style={{ color: "var(--felix-text-primary)" }}>
+      <span className="text-[14px] font-medium" style={{ color: "var(--tp-text-primary)" }}>
         {value}
       </span>
     </div>
@@ -43,13 +43,13 @@ function DetailRow({ label, value }: { label: string; value: string }) {
 function CardHeader({ title, onEdit }: { title: string; onEdit: () => void }) {
   return (
     <div className="flex items-center justify-between mb-3">
-      <h3 className="text-[16px] font-semibold" style={{ color: "var(--felix-text-primary)" }}>
+      <h3 className="text-[16px] font-semibold" style={{ color: "var(--tp-text-primary)" }}>
         {title}
       </h3>
       <button
         onClick={onEdit}
         className="text-[14px] transition-colors hover:underline"
-        style={{ color: "var(--felix-primary)" }}
+        style={{ color: "var(--tp-primary)" }}
       >
         Edit
       </button>
@@ -78,13 +78,13 @@ export default function StepReview({
     <div>
       <h1
         className="text-[24px] font-bold mb-2"
-        style={{ color: "var(--felix-text-primary)" }}
+        style={{ color: "var(--tp-text-primary)" }}
       >
         Review your submission
       </h1>
       <p
         className="text-[16px] mb-8"
-        style={{ color: "var(--felix-text-secondary)" }}
+        style={{ color: "var(--tp-text-secondary)" }}
       >
         Please confirm everything looks correct before submitting
       </p>
@@ -93,7 +93,7 @@ export default function StepReview({
         {/* Prescription card */}
         <div
           className="rounded-[16px] p-6"
-          style={{ border: "1px solid var(--felix-border)" }}
+          style={{ border: "1px solid var(--tp-border)" }}
         >
           <CardHeader title="Prescription" onEdit={() => onEditStep(1)} />
           {previewUrl && (
@@ -118,7 +118,7 @@ export default function StepReview({
         {/* Insurance card */}
         <div
           className="rounded-[16px] p-6"
-          style={{ border: "1px solid var(--felix-border)" }}
+          style={{ border: "1px solid var(--tp-border)" }}
         >
           <CardHeader title="Insurance" onEdit={() => onEditStep(2)} />
           <DetailRow label="Province" value={insuranceDetails.province} />
@@ -132,7 +132,7 @@ export default function StepReview({
         {/* Delivery card */}
         <div
           className="rounded-[16px] p-6"
-          style={{ border: "1px solid var(--felix-border)" }}
+          style={{ border: "1px solid var(--tp-border)" }}
         >
           <CardHeader title="Delivery" onEdit={() => onEditStep(3)} />
           <DetailRow label="Address" value={fullAddress} />

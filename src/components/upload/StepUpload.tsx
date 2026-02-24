@@ -86,7 +86,7 @@ export default function StepUpload({
         style={{
           fontSize: 24,
           fontWeight: 700,
-          color: "var(--felix-text-primary)",
+          color: "var(--tp-text-primary)",
           margin: 0,
           marginBottom: 8,
         }}
@@ -98,7 +98,7 @@ export default function StepUpload({
       <p
         style={{
           fontSize: 16,
-          color: "var(--felix-text-secondary)",
+          color: "var(--tp-text-secondary)",
           margin: 0,
           marginBottom: 24,
           lineHeight: 1.5,
@@ -117,7 +117,7 @@ export default function StepUpload({
             onDragLeave={handleDragLeave}
             onClick={() => inputRef.current?.click()}
             style={{
-              border: `2px dashed ${isDragOver ? "var(--felix-primary)" : "var(--felix-border)"}`,
+              border: `2px dashed ${isDragOver ? "var(--tp-primary)" : "var(--tp-border)"}`,
               borderRadius: 12,
               padding: "48px 24px",
               display: "flex",
@@ -134,14 +134,14 @@ export default function StepUpload({
             <Upload
               size={32}
               style={{
-                color: "var(--felix-text-tertiary)",
+                color: "var(--tp-text-tertiary)",
                 marginBottom: 12,
               }}
             />
             <span
               style={{
                 fontSize: 16,
-                color: "var(--felix-text-secondary)",
+                color: "var(--tp-text-secondary)",
                 marginBottom: 4,
               }}
             >
@@ -150,7 +150,7 @@ export default function StepUpload({
             <span
               style={{
                 fontSize: 14,
-                color: "var(--felix-text-tertiary)",
+                color: "var(--tp-text-tertiary)",
                 marginBottom: 4,
               }}
             >
@@ -159,7 +159,7 @@ export default function StepUpload({
             <span
               style={{
                 fontSize: 16,
-                color: "var(--felix-primary)",
+                color: "var(--tp-primary)",
                 fontWeight: 500,
                 cursor: "pointer",
               }}
@@ -169,7 +169,7 @@ export default function StepUpload({
             <span
               style={{
                 fontSize: 13,
-                color: "var(--felix-text-tertiary)",
+                color: "var(--tp-text-tertiary)",
                 marginTop: 12,
               }}
             >
@@ -188,7 +188,7 @@ export default function StepUpload({
       ) : (
         <div
           style={{
-            border: "1px solid var(--felix-border)",
+            border: "1px solid var(--tp-border)",
             borderRadius: 12,
             padding: 16,
             display: "flex",
@@ -210,7 +210,7 @@ export default function StepUpload({
                 flexShrink: 0,
               }}
             >
-              <FileText size={24} style={{ color: "var(--felix-text-tertiary)" }} />
+              <FileText size={24} style={{ color: "var(--tp-text-tertiary)" }} />
             </div>
           ) : (
             <img
@@ -233,7 +233,7 @@ export default function StepUpload({
               style={{
                 fontSize: 15,
                 fontWeight: 500,
-                color: "var(--felix-text-primary)",
+                color: "var(--tp-text-primary)",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 whiteSpace: "nowrap",
@@ -244,7 +244,7 @@ export default function StepUpload({
             <div
               style={{
                 fontSize: 13,
-                color: "var(--felix-text-tertiary)",
+                color: "var(--tp-text-tertiary)",
                 marginTop: 2,
               }}
             >
@@ -265,7 +265,7 @@ export default function StepUpload({
               alignItems: "center",
               justifyContent: "center",
               flexShrink: 0,
-              color: "var(--felix-text-tertiary)",
+              color: "var(--tp-text-tertiary)",
             }}
           >
             <X size={20} />
@@ -287,7 +287,7 @@ export default function StepUpload({
             border: "none",
             cursor: "pointer",
             fontSize: 15,
-            color: "var(--felix-primary)",
+            color: "var(--tp-primary)",
             fontWeight: 500,
             padding: 0,
           }}

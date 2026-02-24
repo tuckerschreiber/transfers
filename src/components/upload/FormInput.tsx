@@ -2,7 +2,7 @@
 
 import { useId } from "react";
 
-interface FelixInputProps {
+interface FormInputProps {
   label: string;
   value: string;
   onChange: (value: string) => void;
@@ -11,14 +11,14 @@ interface FelixInputProps {
   required?: boolean;
 }
 
-export default function FelixInput({
+export default function FormInput({
   label,
   value,
   onChange,
   type = "text",
   placeholder,
   required = false,
-}: FelixInputProps) {
+}: FormInputProps) {
   const id = useId();
 
   return (
@@ -28,13 +28,13 @@ export default function FelixInput({
         style={{
           display: "block",
           fontSize: 14,
-          color: "var(--felix-text-secondary)",
+          color: "var(--tp-text-secondary)",
           marginBottom: 8,
         }}
       >
         {label}
         {required && (
-          <span style={{ color: "var(--felix-primary)", marginLeft: 2 }}>*</span>
+          <span style={{ color: "var(--tp-primary)", marginLeft: 2 }}>*</span>
         )}
       </label>
       <input
@@ -47,18 +47,18 @@ export default function FelixInput({
           width: "100%",
           fontSize: 16,
           padding: 12,
-          border: "0.5px solid var(--felix-border)",
+          border: "0.5px solid var(--tp-border)",
           borderRadius: 12,
           outline: "none",
-          color: "var(--felix-text-primary)",
+          color: "var(--tp-text-primary)",
           boxSizing: "border-box",
           fontFamily: "inherit",
         }}
         onFocus={(e) => {
-          e.currentTarget.style.border = "0.125rem solid var(--felix-focus)";
+          e.currentTarget.style.border = "0.125rem solid var(--tp-focus)";
         }}
         onBlur={(e) => {
-          e.currentTarget.style.border = "0.5px solid var(--felix-border)";
+          e.currentTarget.style.border = "0.5px solid var(--tp-border)";
         }}
       />
     </div>

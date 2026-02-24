@@ -6,22 +6,22 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
 }
 
-/* Felix design tokens */
+/* Design tokens */
 :root {
-  --felix-primary: #DE781F;
-  --felix-primary-hover: #c86a1a;
-  --felix-dark-brown: #40231A;
-  --felix-text-primary: #31302F;
-  --felix-text-secondary: #5F5E5A;
-  --felix-text-tertiary: #91908F;
-  --felix-border: #E2E2E1;
-  --felix-focus: #4d65ff;
-  --felix-bg: #FFFFFF;
+  --tp-primary: #DE781F;
+  --tp-primary-hover: #c86a1a;
+  --tp-dark-brown: #40231A;
+  --tp-text-primary: #31302F;
+  --tp-text-secondary: #5F5E5A;
+  --tp-text-tertiary: #91908F;
+  --tp-border: #E2E2E1;
+  --tp-focus: #4d65ff;
+  --tp-bg: #FFFFFF;
 }
 
-.felix-page {
+.tp-page {
   font-family: 'DM Sans', system-ui, sans-serif;
-  color: var(--felix-text-primary);
-  background: var(--felix-bg);
+  color: var(--tp-text-primary);
+  background: var(--tp-bg);
   -webkit-font-smoothing: antialiased;
 }

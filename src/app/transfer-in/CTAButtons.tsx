@@ -8,12 +8,12 @@ export default function CTAButtons() {
       <Link
         href="/upload"
         className="inline-block px-8 py-4 rounded-[12px] text-[16px] font-medium text-white transition-colors"
-        style={{ backgroundColor: "var(--felix-primary)" }}
+        style={{ backgroundColor: "var(--tp-primary)" }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = "var(--felix-primary-hover)";
+          e.currentTarget.style.backgroundColor = "var(--tp-primary-hover)";
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = "var(--felix-primary)";
+          e.currentTarget.style.backgroundColor = "var(--tp-primary)";
         }}
       >
         Upload your prescription
@@ -25,7 +25,7 @@ export default function CTAButtons() {
             ?.scrollIntoView({ behavior: "smooth" });
         }}
         className="text-[16px] font-medium transition-colors hover:underline"
-        style={{ color: "var(--felix-text-secondary)" }}
+        style={{ color: "var(--tp-text-secondary)" }}
       >
         Learn how it works
       </button>

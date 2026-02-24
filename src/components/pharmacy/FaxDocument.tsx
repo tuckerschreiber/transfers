@@ -67,7 +67,7 @@ export default function FaxDocument({ prescriptions, sourcePharmacy, receivedAt 
           <div className="grid grid-cols-2 gap-4 text-xs border-b border-gray-200 pb-3">
             <div>
               <p className="text-gray-400 uppercase text-[10px] mb-0.5">To</p>
-              <p className="font-semibold">Felix Health Pharmacy</p>
+              <p className="font-semibold">Tucker&apos;s Pharmacy</p>
               <p className="text-gray-500">Fax: (416) 555-0100</p>
             </div>
             <div>

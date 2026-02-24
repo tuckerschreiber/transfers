@@ -1,6 +1,6 @@
 "use client";
 
-import FelixInput from "./FelixInput";
+import FormInput from "./FormInput";
 
 export interface PrescriptionDetails {
   medicationName: string;
@@ -32,7 +32,7 @@ export default function StepConfirmDetails({
         style={{
           fontSize: 24,
           fontWeight: 700,
-          color: "var(--felix-text-primary)",
+          color: "var(--tp-text-primary)",
           margin: 0,
           marginBottom: 8,
         }}
@@ -44,7 +44,7 @@ export default function StepConfirmDetails({
       <p
         style={{
           fontSize: 16,
-          color: "var(--felix-text-secondary)",
+          color: "var(--tp-text-secondary)",
           margin: 0,
           marginBottom: 24,
           lineHeight: 1.5,
@@ -81,21 +81,21 @@ export default function StepConfirmDetails({
       )}
 
       {/* Form fields */}
-      <FelixInput
+      <FormInput
         label="Medication name"
         value={details.medicationName}
         onChange={(v) => update("medicationName", v)}
         required
         placeholder="e.g. Sertraline"
       />
-      <FelixInput
+      <FormInput
         label="Dose"
         value={details.dose}
         onChange={(v) => update("dose", v)}
         required
         placeholder="e.g. 50mg once daily"
       />
-      <FelixInput
+      <FormInput
         label="Quantity"
         value={details.quantity}
         onChange={(v) => update("quantity", v)}
@@ -103,14 +103,14 @@ export default function StepConfirmDetails({
         required
         placeholder="e.g. 30"
       />
-      <FelixInput
+      <FormInput
         label="Prescriber name"
         value={details.prescriberName}
         onChange={(v) => update("prescriberName", v)}
         required
         placeholder="e.g. Dr. Emily Watson"
       />
-      <FelixInput
+      <FormInput
         label="Date written"
         value={details.dateWritten}
         onChange={(v) => update("dateWritten", v)}

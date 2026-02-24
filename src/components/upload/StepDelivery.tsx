@@ -1,7 +1,7 @@
 "use client";
 
-import FelixInput from "./FelixInput";
-import FelixSelect from "./FelixSelect";
+import FormInput from "./FormInput";
+import FormSelect from "./FormSelect";
 
 export interface DeliveryDetails {
   street: string;
@@ -40,7 +40,7 @@ export default function StepDelivery({ details, onChange }: StepDeliveryProps) {
         style={{
           fontSize: 28,
           fontWeight: 700,
-          color: "var(--felix-text-primary)",
+          color: "var(--tp-text-primary)",
           marginBottom: 8,
         }}
       >
@@ -49,7 +49,7 @@ export default function StepDelivery({ details, onChange }: StepDeliveryProps) {
       <p
         style={{
           fontSize: 16,
-          color: "var(--felix-text-secondary)",
+          color: "var(--tp-text-secondary)",
           marginBottom: 32,
           lineHeight: 1.5,
         }}
@@ -57,25 +57,25 @@ export default function StepDelivery({ details, onChange }: StepDeliveryProps) {
         Where should we send your medication?
       </p>
 
-      <FelixInput
+      <FormInput
         label="Street address"
         value={details.street}
         onChange={(v) => update("street", v)}
         required
       />
-      <FelixInput
+      <FormInput
         label="Unit / Apartment (optional)"
         value={details.unit}
         onChange={(v) => update("unit", v)}
       />
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-        <FelixInput
+        <FormInput
           label="City"
           value={details.city}
           onChange={(v) => update("city", v)}
           required
         />
-        <FelixSelect
+        <FormSelect
           label="Province"
           value={details.province}
           onChange={(v) => update("province", v)}
@@ -83,7 +83,7 @@ export default function StepDelivery({ details, onChange }: StepDeliveryProps) {
           required
         />
       </div>
-      <FelixInput
+      <FormInput
         label="Postal code"
         value={details.postalCode}
         onChange={(v) => update("postalCode", v)}
