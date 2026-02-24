@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <rect width="600" height="800" fill="white" stroke="#E2E2E1" stroke-width="2"/>
+  <text x="300" y="50" text-anchor="middle" font-family="serif" font-size="24" font-weight="bold" fill="#31302F">Dr. Emily Watson, MD</text>
+  <text x="300" y="75" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5F5E5A">123 Medical Centre Dr, Toronto, ON M5G 1X5</text>
+  <text x="300" y="92" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5F5E5A">Tel: (416) 555-0123 | Fax: (416) 555-0124</text>
+  <line x1="40" y1="110" x2="560" y2="110" stroke="#E2E2E1" stroke-width="1"/>
+  <text x="50" y="170" font-family="serif" font-size="48" font-weight="bold" fill="#DE781F">&#x211E;</text>
+  <text x="120" y="145" font-family="sans-serif" font-size="14" fill="#5F5E5A">Patient:</text>
+  <text x="120" y="165" font-family="sans-serif" font-size="16" font-weight="bold" fill="#31302F">Jordan Lee</text>
+  <text x="350" y="145" font-family="sans-serif" font-size="14" fill="#5F5E5A">Date:</text>
+  <text x="350" y="165" font-family="sans-serif" font-size="16" font-weight="bold" fill="#31302F">February 20, 2026</text>
+  <line x1="40" y1="185" x2="560" y2="185" stroke="#E2E2E1" stroke-width="1"/>
+  <text x="60" y="230" font-family="sans-serif" font-size="18" font-weight="bold" fill="#31302F">Sertraline 50mg tablets</text>
+  <text x="60" y="260" font-family="sans-serif" font-size="14" fill="#5F5E5A">Sig: Take one tablet by mouth once daily</text>
+  <text x="60" y="285" font-family="sans-serif" font-size="14" fill="#5F5E5A">Qty: 30 (thirty)</text>
+  <text x="60" y="310" font-family="sans-serif" font-size="14" fill="#5F5E5A">Refills: 3 (three)</text>
+  <line x1="60" y1="420" x2="280" y2="420" stroke="#31302F" stroke-width="1"/>
+  <text x="60" y="445" font-family="sans-serif" font-size="12" fill="#5F5E5A">Prescriber Signature</text>
+  <text x="60" y="410" font-family="cursive" font-size="24" fill="#31302F">E. Watson</text>
+  <text x="350" y="445" font-family="sans-serif" font-size="12" fill="#5F5E5A">CPSO# 87654</text>
+</svg>
