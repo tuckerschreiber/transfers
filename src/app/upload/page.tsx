@@ -1,11 +1,85 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Link from "next/link";
 import ProgressBar from "@/components/upload/ProgressBar";
+import StepUpload from "@/components/upload/StepUpload";
+import StepConfirmDetails, {
+  type PrescriptionDetails,
+} from "@/components/upload/StepConfirmDetails";
+
+const SAMPLE_DATA: PrescriptionDetails = {
+  medicationName: "Sertraline",
+  dose: "50mg once daily",
+  quantity: "30",
+  prescriberName: "Dr. Emily Watson",
+  dateWritten: "2026-02-20",
+};
 
 export default function UploadPage() {
   const [currentStep, setCurrentStep] = useState(0);
+  const [file, setFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [prescriptionDetails, setPrescriptionDetails] =
+    useState<PrescriptionDetails>({
+      medicationName: "",
+      dose: "",
+      quantity: "",
+      prescriberName: "",
+      dateWritten: "",
+    });
+
+  const handleFileSelect = useCallback((f: File, url: string) => {
+    setFile(f);
+    setPreviewUrl(url);
+  }, []);
+
+  const handleFileRemove = useCallback(() => {
+    if (previewUrl && previewUrl.startsWith("blob:")) {
+      URL.revokeObjectURL(previewUrl);
+    }
+    setFile(null);
+    setPreviewUrl(null);
+  }, [previewUrl]);
+
+  const handleUseSample = useCallback(() => {
+    const mockFile = new File(["sample"], "sample-prescription.svg", {
+      type: "image/svg+xml",
+    });
+    setFile(mockFile);
+    setPreviewUrl("/sample-prescription.svg");
+    setPrescriptionDetails(SAMPLE_DATA);
+    setCurrentStep(1);
+  }, []);
+
+  const renderStep = () => {
+    switch (currentStep) {
+      case 0:
+        return (
+          <StepUpload
+            file={file}
+            previewUrl={previewUrl}
+            onFileSelect={handleFileSelect}
+            onFileRemove={handleFileRemove}
+            onUseSample={handleUseSample}
+          />
+        );
+      case 1:
+        return (
+          <StepConfirmDetails
+            previewUrl={previewUrl}
+            details={prescriptionDetails}
+            onChange={setPrescriptionDetails}
+          />
+        );
+      default:
+        return (
+          <div className="text-center" style={{ color: "var(--felix-text-tertiary)" }}>
+            Step {currentStep + 1} of 7
+          </div>
+        );
+    }
+  };
 
   return (
     <div className="felix-page min-h-screen flex flex-col">
@@ -33,9 +107,7 @@ export default function UploadPage() {
       {/* Content area */}
       <div className="flex-1 flex justify-center pt-12 pb-24 px-6">
         <div className="w-full max-w-[560px]">
-          <div className="text-center text-[var(--felix-text-tertiary)]">
-            Step {currentStep + 1} of 7
-          </div>
+          {renderStep()}
         </div>
       </div>
 
