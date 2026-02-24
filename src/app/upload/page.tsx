@@ -14,6 +14,10 @@ import StepDelivery, {
   type DeliveryDetails,
 } from "@/components/upload/StepDelivery";
 import StepConsent from "@/components/upload/StepConsent";
+import StepReview from "@/components/upload/StepReview";
+import StepConfirmation from "@/components/upload/StepConfirmation";
+import UploadDemoSidebar from "@/components/upload/UploadDemoSidebar";
+import type { UploadStatus } from "@/lib/types";
 
 const SAMPLE_DATA: PrescriptionDetails = {
   medicationName: "Sertraline",
@@ -54,6 +58,9 @@ export default function UploadPage() {
   const [priceConsent, setPriceConsent] = useState(false);
   const [counselingConsent, setCounselingConsent] = useState(false);
 
+  const [submittedUploadId, setSubmittedUploadId] = useState<string | null>(null);
+  const [uploadStatus, setUploadStatus] = useState<UploadStatus>("under_review");
+
   const canContinue = currentStep !== 4 || (priceConsent && counselingConsent);
 
   const handleFileSelect = useCallback((f: File, url: string) => {
@@ -78,6 +85,38 @@ export default function UploadPage() {
     setPrescriptionDetails(SAMPLE_DATA);
     setCurrentStep(1);
   }, []);
+
+  const handleSubmit = async () => {
+    const response = await fetch("/api/uploads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        patientName: "Demo User",
+        patientEmail: "demo@felixforyou.ca",
+        imageUrl: "/sample-prescription.svg",
+        medicationName: prescriptionDetails.medicationName,
+        dose: prescriptionDetails.dose,
+        quantity: parseInt(prescriptionDetails.quantity),
+        prescriberName: prescriptionDetails.prescriberName,
+        dateWritten: prescriptionDetails.dateWritten,
+        province: insuranceDetails.province,
+        insuranceProvider: insuranceDetails.insuranceProvider,
+        insurancePolicyNumber: insuranceDetails.insurancePolicyNumber,
+        insuranceGroupNumber: insuranceDetails.insuranceGroupNumber || null,
+        deliveryAddress: {
+          street: deliveryDetails.street,
+          unit: deliveryDetails.unit || null,
+          city: deliveryDetails.city,
+          province: deliveryDetails.province,
+          postalCode: deliveryDetails.postalCode,
+        },
+      }),
+    });
+    const upload = await response.json();
+    setSubmittedUploadId(upload.id);
+    setUploadStatus("under_review");
+    setCurrentStep(6);
+  };
 
   const renderStep = () => {
     switch (currentStep) {
@@ -122,12 +161,69 @@ export default function UploadPage() {
             onCounselingConsentChange={setCounselingConsent}
           />
         );
+      case 5:
+        return (
+          <StepReview
+            previewUrl={previewUrl}
+            prescriptionDetails={prescriptionDetails}
+            insuranceDetails={insuranceDetails}
+            deliveryDetails={deliveryDetails}
+            onEditStep={(step) => setCurrentStep(step)}
+          />
+        );
       default:
         return (
           <div className="text-center" style={{ color: "var(--felix-text-tertiary)" }}>
             Step {currentStep + 1} of 7
           </div>
         );
+    }
+  };
+
+  // Confirmation screen with demo sidebar — completely different layout
+  if (currentStep === 6) {
+    return (
+      <div className="felix-page flex h-screen">
+        <UploadDemoSidebar
+          uploadStatus={uploadStatus}
+          onStatusChange={async (status) => {
+            setUploadStatus(status);
+            if (submittedUploadId) {
+              await fetch(`/api/uploads/${submittedUploadId}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ status }),
+              });
+            }
+          }}
+          onReset={() => {
+            setCurrentStep(0);
+            setFile(null);
+            setPreviewUrl(null);
+            setPrescriptionDetails({ medicationName: "", dose: "", quantity: "", prescriberName: "", dateWritten: "" });
+            setInsuranceDetails({ province: "Ontario", insuranceProvider: "Sun Life", insurancePolicyNumber: "SL-2847561", insuranceGroupNumber: "GRP-104" });
+            setDeliveryDetails({ street: "45 King St W", unit: "Suite 1200", city: "Toronto", province: "Ontario", postalCode: "M5H 1J8" });
+            setPriceConsent(false);
+            setCounselingConsent(false);
+            setSubmittedUploadId(null);
+          }}
+        />
+        <div className="flex-1 flex items-center justify-center px-6">
+          <div className="w-full max-w-[560px]">
+            <StepConfirmation />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const continueLabel = currentStep === 5 ? "Submit prescription for review" : "Continue";
+  const handleContinue = () => {
+    if (!canContinue) return;
+    if (currentStep === 5) {
+      handleSubmit();
+    } else {
+      setCurrentStep((s) => s + 1);
     }
   };
 
@@ -177,7 +273,7 @@ export default function UploadPage() {
           )}
           {currentStep < 6 && (
             <button
-              onClick={() => canContinue && setCurrentStep((s) => s + 1)}
+              onClick={handleContinue}
               disabled={!canContinue}
               className="px-6 py-3 rounded-[12px] text-[16px] font-medium text-white transition-colors"
               style={{
@@ -192,7 +288,7 @@ export default function UploadPage() {
                 e.currentTarget.style.backgroundColor = "var(--felix-primary)";
               }}
             >
-              Continue
+              {continueLabel}
             </button>
           )}
         </div>
