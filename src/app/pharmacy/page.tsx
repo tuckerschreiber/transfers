@@ -133,6 +133,9 @@ export default function PharmacyDashboard() {
       <div className="bg-white border-b border-gray-200 px-8 py-4 flex items-center justify-between">
         <h1 className="text-lg font-bold text-gray-900">Pharmacy Dashboard</h1>
         <div className="flex items-center gap-4">
+          <Link href="/transfer-in" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+            Transfer In
+          </Link>
           <Link href="/upload" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
             Upload Rx Demo
           </Link>

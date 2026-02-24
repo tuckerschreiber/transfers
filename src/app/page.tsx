@@ -63,7 +63,7 @@ export default function Home() {
               await fetch("/api/transfers", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ prescriptionId: "rx-1", sourcePharmacyId: pharmacyId }),
+                body: JSON.stringify({ prescriptionIds: ["rx-1"], sourcePharmacyId: pharmacyId }),
               });
               setTrackerState("submitted");
               setCurrentView("tracker");

@@ -232,7 +232,7 @@ export default function UploadPage() {
       {/* Top nav */}
       <nav className="bg-white border-b" style={{ borderColor: "var(--felix-border)", borderWidth: "0.5px" }}>
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-[20px] font-bold" style={{ color: "var(--felix-primary)" }}>
+          <Link href="/transfer-in" className="text-[20px] font-bold" style={{ color: "var(--felix-primary)" }}>
             felix
           </Link>
           <Link

@@ -12,7 +12,7 @@ const STATUS_COLORS: Record<TransferStatus, string> = {
 
 interface TransferRow {
   transfer: Transfer;
-  prescription: Prescription;
+  prescriptions: Prescription[];
   pharmacy: Pharmacy;
 }
 
@@ -35,7 +35,7 @@ export default function TransferTable({ rows, selectedId, onSelect }: TransferTa
         </tr>
       </thead>
       <tbody>
-        {rows.map(({ transfer, prescription, pharmacy }) => (
+        {rows.map(({ transfer, prescriptions, pharmacy }) => (
           <tr
             key={transfer.id}
             onClick={() => onSelect(transfer.id)}
@@ -43,8 +43,15 @@ export default function TransferTable({ rows, selectedId, onSelect }: TransferTa
               selectedId === transfer.id ? "bg-gray-50" : "hover:bg-gray-50"
             }`}
           >
-            <td className="py-3 px-4 text-sm font-medium text-gray-900">{prescription.patientName}</td>
-            <td className="py-3 px-4 text-sm text-gray-600">{prescription.drugName}</td>
+            <td className="py-3 px-4 text-sm font-medium text-gray-900">{prescriptions[0]?.patientName}</td>
+            <td className="py-3 px-4 text-sm text-gray-600">
+              {prescriptions[0]?.drugName}
+              {prescriptions.length > 1 && (
+                <span className="ml-1.5 text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-500">
+                  +{prescriptions.length - 1} more
+                </span>
+              )}
+            </td>
             <td className="py-3 px-4 text-sm text-gray-600">{pharmacy.name}</td>
             <td className="py-3 px-4">
               <span className={`text-xs font-medium px-2.5 py-1 rounded-full capitalize ${STATUS_COLORS[transfer.status]}`}>

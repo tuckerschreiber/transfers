@@ -7,11 +7,11 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const { prescriptionId, sourcePharmacyId } = body;
+  const { prescriptionIds, sourcePharmacyId } = body;
 
   const newTransfer = {
     id: nextTransferId(),
-    prescriptionId,
+    prescriptionIds,
     sourcePharmacyId,
     status: "submitted" as const,
     createdAt: new Date().toISOString(),

@@ -87,6 +87,12 @@ export default function DemoSidebar({
       {/* Links */}
       <div className="mt-auto pt-4 border-t border-gray-100 flex flex-col gap-2">
         <Link
+          href="/transfer-in"
+          className="block text-sm text-gray-500 hover:text-gray-900 transition-colors"
+        >
+          Open Transfer In Page &rarr;
+        </Link>
+        <Link
           href="/pharmacy"
           className="block text-sm text-gray-500 hover:text-gray-900 transition-colors"
         >
