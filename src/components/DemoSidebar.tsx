@@ -85,12 +85,18 @@ export default function DemoSidebar({
       )}
 
       {/* Links */}
-      <div className="mt-auto pt-4 border-t border-gray-100">
+      <div className="mt-auto pt-4 border-t border-gray-100 flex flex-col gap-2">
         <Link
           href="/pharmacy"
-          className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
+          className="block text-sm text-gray-500 hover:text-gray-900 transition-colors"
         >
           Open Pharmacy Dashboard &rarr;
+        </Link>
+        <Link
+          href="/upload"
+          className="block text-sm text-gray-500 hover:text-gray-900 transition-colors"
+        >
+          Open Upload Rx Demo &rarr;
         </Link>
       </div>
     </div>

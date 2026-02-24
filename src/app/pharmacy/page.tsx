@@ -132,9 +132,14 @@ export default function PharmacyDashboard() {
       {/* Top nav */}
       <div className="bg-white border-b border-gray-200 px-8 py-4 flex items-center justify-between">
         <h1 className="text-lg font-bold text-gray-900">Pharmacy Dashboard</h1>
-        <Link href="/" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
-          &larr; Patient Demo
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link href="/upload" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+            Upload Rx Demo
+          </Link>
+          <Link href="/" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+            &larr; Patient Demo
+          </Link>
+        </div>
       </div>
 
       {/* Tab switcher */}
@@ -186,6 +191,7 @@ export default function PharmacyDashboard() {
         {tab === "uploads" && selectedUpload && (
           <div className="w-[400px] shrink-0">
             <UploadDetail
+              key={`${selectedUpload.id}-${selectedUpload.pharmacyNotes}`}
               upload={selectedUpload}
               onUpdateStatus={handleUploadStatusChange}
             />
