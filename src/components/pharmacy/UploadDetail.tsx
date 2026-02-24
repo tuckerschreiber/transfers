@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { UploadedPrescription, UploadStatus } from "@/lib/types";
 import { X } from "lucide-react";
 
@@ -25,13 +25,6 @@ export default function UploadDetail({ upload, onUpdateStatus }: UploadDetailPro
   const [notes, setNotes] = useState(upload.pharmacyNotes || "");
   const [rejectionReason, setRejectionReason] = useState("");
   const [showImageModal, setShowImageModal] = useState(false);
-
-  // Reset local state when upload changes
-  useEffect(() => {
-    setNotes(upload.pharmacyNotes || "");
-    setRejectionReason("");
-    setShowImageModal(false);
-  }, [upload.id, upload.pharmacyNotes]);
 
   const isFinal = upload.status === "filled" || upload.status === "rejected";
 
