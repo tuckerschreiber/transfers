@@ -7,6 +7,13 @@ import StepUpload from "@/components/upload/StepUpload";
 import StepConfirmDetails, {
   type PrescriptionDetails,
 } from "@/components/upload/StepConfirmDetails";
+import StepInsurance, {
+  type InsuranceDetails,
+} from "@/components/upload/StepInsurance";
+import StepDelivery, {
+  type DeliveryDetails,
+} from "@/components/upload/StepDelivery";
+import StepConsent from "@/components/upload/StepConsent";
 
 const SAMPLE_DATA: PrescriptionDetails = {
   medicationName: "Sertraline",
@@ -28,6 +35,26 @@ export default function UploadPage() {
       prescriberName: "",
       dateWritten: "",
     });
+
+  const [insuranceDetails, setInsuranceDetails] = useState<InsuranceDetails>({
+    province: "Ontario",
+    insuranceProvider: "Sun Life",
+    insurancePolicyNumber: "SL-2847561",
+    insuranceGroupNumber: "GRP-104",
+  });
+
+  const [deliveryDetails, setDeliveryDetails] = useState<DeliveryDetails>({
+    street: "45 King St W",
+    unit: "Suite 1200",
+    city: "Toronto",
+    province: "Ontario",
+    postalCode: "M5H 1J8",
+  });
+
+  const [priceConsent, setPriceConsent] = useState(false);
+  const [counselingConsent, setCounselingConsent] = useState(false);
+
+  const canContinue = currentStep !== 4 || (priceConsent && counselingConsent);
 
   const handleFileSelect = useCallback((f: File, url: string) => {
     setFile(f);
@@ -70,6 +97,29 @@ export default function UploadPage() {
             previewUrl={previewUrl}
             details={prescriptionDetails}
             onChange={setPrescriptionDetails}
+          />
+        );
+      case 2:
+        return (
+          <StepInsurance
+            details={insuranceDetails}
+            onChange={setInsuranceDetails}
+          />
+        );
+      case 3:
+        return (
+          <StepDelivery
+            details={deliveryDetails}
+            onChange={setDeliveryDetails}
+          />
+        );
+      case 4:
+        return (
+          <StepConsent
+            priceConsent={priceConsent}
+            counselingConsent={counselingConsent}
+            onPriceConsentChange={setPriceConsent}
+            onCounselingConsentChange={setCounselingConsent}
           />
         );
       default:
@@ -127,11 +177,20 @@ export default function UploadPage() {
           )}
           {currentStep < 6 && (
             <button
-              onClick={() => setCurrentStep((s) => s + 1)}
+              onClick={() => canContinue && setCurrentStep((s) => s + 1)}
+              disabled={!canContinue}
               className="px-6 py-3 rounded-[12px] text-[16px] font-medium text-white transition-colors"
-              style={{ backgroundColor: "var(--felix-primary)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--felix-primary-hover)")}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "var(--felix-primary)")}
+              style={{
+                backgroundColor: "var(--felix-primary)",
+                opacity: canContinue ? 1 : 0.5,
+                cursor: canContinue ? "pointer" : "not-allowed",
+              }}
+              onMouseEnter={(e) => {
+                if (canContinue) e.currentTarget.style.backgroundColor = "var(--felix-primary-hover)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--felix-primary)";
+              }}
             >
               Continue
             </button>
